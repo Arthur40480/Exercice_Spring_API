@@ -1,10 +1,9 @@
 package fr.fms.apitrainings.web;
 
-import fr.fms.apitrainings.business.IBusiness;
 import fr.fms.apitrainings.business.IBusinessImpl;
+import fr.fms.apitrainings.entities.RecordNotFoundException;
 import fr.fms.apitrainings.entities.Training;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -12,8 +11,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
+@CrossOrigin("*")
+/*@CrossOrigin("http://localhost:4200/")*/
 @RestController
 @RequestMapping("/api")
 public class TrainingController {
@@ -46,12 +46,9 @@ public class TrainingController {
     }
 
     @GetMapping("/training/{id}")
-    public ResponseEntity<Training> getTrainingById(@PathVariable("id") Long id) {
-        Optional<Training> training = iBusiness.getTrainingById(id);
-        if(training.isPresent()) {
-            return new ResponseEntity<>(training.get(), HttpStatus.OK);
-        }
-        return null;
+    public Training getTrainingById(@PathVariable("id") Long id) {
+        return iBusiness.getTrainingById(id)
+                .orElseThrow(() -> new RecordNotFoundException("Id de Formation " + id + " n'éxiste pas" ));
     }
 
 }

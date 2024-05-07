@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class IBusinessImpl implements IBusiness {
 
-    @Autowired
+    @Autowired(required = true)
     TrainingRepository trainingRepository;
 
     @Override
