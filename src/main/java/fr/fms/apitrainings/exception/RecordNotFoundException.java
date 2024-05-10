@@ -1,4 +1,4 @@
-package fr.fms.apitrainings.entities;
+package fr.fms.apitrainings.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

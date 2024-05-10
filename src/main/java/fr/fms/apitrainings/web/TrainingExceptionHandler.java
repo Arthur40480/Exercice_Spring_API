@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import fr.fms.apitrainings.entities.RecordNotFoundException;
+import fr.fms.apitrainings.exception.RecordNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
