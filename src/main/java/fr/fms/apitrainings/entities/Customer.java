@@ -11,16 +11,14 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 @Data
-public class Training implements Serializable {
+public class Customer implements Serializable {
 
-    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String description;
-    private double price;
-    private int quantity;
-    private String img;
-
-    @ManyToOne
-    private Category category;
+    private String lastname;
+    private String adress;
+    private String phone;
+    private String email;
 }

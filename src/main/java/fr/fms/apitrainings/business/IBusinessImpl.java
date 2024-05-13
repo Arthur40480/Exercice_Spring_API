@@ -1,13 +1,7 @@
 package fr.fms.apitrainings.business;
 
-import fr.fms.apitrainings.dao.CategoryRepository;
-import fr.fms.apitrainings.dao.TrainingRepository;
-import fr.fms.apitrainings.dao.UserRepository;
-import fr.fms.apitrainings.dao.UserRoleRepository;
-import fr.fms.apitrainings.entities.Category;
-import fr.fms.apitrainings.entities.Training;
-import fr.fms.apitrainings.entities.User;
-import fr.fms.apitrainings.entities.UserRole;
+import fr.fms.apitrainings.dao.*;
+import fr.fms.apitrainings.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +22,12 @@ public class IBusinessImpl implements IBusiness {
 
     @Autowired
     UserRoleRepository userRoleRepository;
+
+    @Autowired
+    CustomerRepository customerRepository;
+
+    @Autowired
+    OrderRepository orderRepository;
 
     @Override
     public List<Training> getTrainings() {return trainingRepository.findAll(); }
@@ -58,4 +58,10 @@ public class IBusinessImpl implements IBusiness {
         User user = userRepository.findById(idUser).orElse(null);
         return userRoleRepository.findByUser(user);
     }
+
+    @Override
+    public Customer saveCustomer(Customer customer) { return customerRepository.save(customer); }
+
+    @Override
+    public Commande saveOrder(Commande order) { return orderRepository.save(order); }
 }

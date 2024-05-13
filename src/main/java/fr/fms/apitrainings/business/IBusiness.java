@@ -1,9 +1,6 @@
 package fr.fms.apitrainings.business;
 
-import fr.fms.apitrainings.entities.Category;
-import fr.fms.apitrainings.entities.Training;
-import fr.fms.apitrainings.entities.User;
-import fr.fms.apitrainings.entities.UserRole;
+import fr.fms.apitrainings.entities.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,4 +24,10 @@ public interface IBusiness {
 
     //USER_ROLE
     List<UserRole> getAllUserRole(Long idUser);
+
+    //CUSTOMER
+    Customer saveCustomer(Customer customer);
+
+    //ORDER
+    Commande saveOrder(Commande order);
 }
